@@ -1,3 +1,5 @@
-export default function SiteContent({ list }: { list: string }) {
-  return <div>{list}</div>;
+import { CarInterface } from '../interfaces/carInterface';
+
+export default function SiteContent({ list }: { list: Array<CarInterface> }) {
+  return <div>x</div>;
 }

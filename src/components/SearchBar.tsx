@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import ButtonClassic from './ButtonClassic';
+import ButtonClassic from './Buttons/ButtonClassic';
 import loading from '../assets/icons/loading.png';
 import check from '../assets/icons/check.png';
 import error from '../assets/icons/error.png';
+
 import LoadingInterface from '../interfaces/loadingInterface';
 
 export default function SearchBar() {
