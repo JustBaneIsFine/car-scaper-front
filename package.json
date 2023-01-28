@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "main": "./dist/assets/index-a125f794.js"
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
