@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import carPlaceholder from '../assets/icons/car-placeholder.png';
+import carPlaceholder from '@asset/car-placeholder.png';
 import { StepsInterface } from '../interfaces/StateInterfaces';
 import ButtonClassic from '../components/Buttons/ButtonClassic';
 
