@@ -51,16 +51,22 @@ export default function About({ x }: { x: string }) {
           <div className="m-auto mt-5 w-1/2 border border-dashed border-white  opacity-50" />
           <ol className="mt-3">
             <li>
-              <a href="/">Facebook</a>
+              <a href="https://www.facebook.com/branislav.milosevic.752487">
+                Facebook
+              </a>
             </li>
             <li>
-              <a href="/">Linkedin</a>
+              <a href="https://www.linkedin.com/in/branislav-milosevic-006948186/">
+                Linkedin
+              </a>
             </li>
             <li>
-              <a href="/">Github</a>
+              <a href="https://github.com/JustBaneIsFine/">Github</a>
             </li>
             <li>
-              <a href="/">Gmail</a>
+              <a href="https://mail.google.com/mail/u/0/?fs=1&to=bane.baki.1997@gmail.com&tf=cm">
+                Gmail
+              </a>
             </li>
           </ol>
         </div>
