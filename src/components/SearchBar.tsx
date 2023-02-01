@@ -75,7 +75,7 @@ export default function SearchBar() {
         <ButtonClassic
           name="Submit"
           onclick={() => {
-            fetch('https://car-scraper-api.vercel.app').then((res) => {
+            fetch('https://car-scraper-api.vercel.app/test').then((res) => {
               console.log(res);
             });
             console.log('submited');
