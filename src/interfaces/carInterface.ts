@@ -10,10 +10,10 @@ export interface CarInterface {
 }
 
 export interface CarInterfaceRequest {
-  CarMake: string;
-  CarModel: string;
-  CarYearStart: string;
-  CarYearEnd: string;
+  carMake: string;
+  carModel: string;
+  carYearStart: string;
+  carYearEnd: string;
 }
 
 export interface CarRequestValues extends CarInterfaceRequest {

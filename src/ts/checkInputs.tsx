@@ -7,10 +7,10 @@ const url = 'https://car-scraper-api.vercel.app/scrape';
 
 export default async function checkInputs(
   data: {
-    CarMake: string;
-    CarModel: string;
-    CarYearStart: string;
-    CarYearEnd: string;
+    carMake: string;
+    carModel: string;
+    carYearStart: string;
+    carYearEnd: string;
   },
   errorState: {
     state: InputErrorState;
@@ -18,7 +18,7 @@ export default async function checkInputs(
   }
 ) {
   let error = false;
-  if (isEmpty(data.CarMake) || !matchMake(data.CarMake)) {
+  if (isEmpty(data.carMake) || !matchMake(data.carMake)) {
     errorState.setState((prev) => ({
       ...prev,
       makeError: true,
@@ -30,18 +30,18 @@ export default async function checkInputs(
     makeError: false,
   }));
 
-  if (isEmpty(data.CarModel) || !matchData(data.CarMake, data.CarModel)) {
+  if (isEmpty(data.carModel) || !matchData(data.carMake, data.carModel)) {
     errorState.setState((prev) => ({ ...prev, modelError: true }));
     error = true;
   } else {
     errorState.setState((prev) => ({ ...prev, modelError: false }));
   }
-  if (isEmpty(data.CarYearStart) || !matchYear(data.CarYearStart)) {
+  if (isEmpty(data.carYearStart) || !matchYear(data.carYearStart)) {
     errorState.setState((prev) => ({ ...prev, yearStartError: true }));
   } else {
     errorState.setState((prev) => ({ ...prev, yearStartError: false }));
   }
-  if (isEmpty(data.CarYearEnd) || !matchYear(data.CarYearEnd)) {
+  if (isEmpty(data.carYearEnd) || !matchYear(data.carYearEnd)) {
     errorState.setState((prev) => ({ ...prev, yearEndError: true }));
     error = true;
   } else {
@@ -95,16 +95,16 @@ export function generateObject(
   refYearEnd: React.RefObject<HTMLInputElement>
 ): CarInterfaceRequest {
   return {
-    CarMake: refMake?.current?.value === undefined ? '' : refMake.current.value,
+    carMake: refMake?.current?.value === undefined ? '' : refMake.current.value,
 
-    CarModel:
+    carModel:
       refModel?.current?.value === undefined ? '' : refModel.current.value,
 
-    CarYearStart:
+    carYearStart:
       refYearStart?.current?.value === undefined
         ? ''
         : refYearStart.current.value,
-    CarYearEnd:
+    carYearEnd:
       refYearEnd?.current?.value === undefined ? '' : refYearEnd.current.value,
   };
 }
