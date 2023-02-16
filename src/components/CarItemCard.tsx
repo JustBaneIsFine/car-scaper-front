@@ -2,15 +2,11 @@ import { CarInterface } from '../interfaces/carInterface';
 
 export default function CarItemCard({ carData }: { carData: CarInterface }) {
   return (
-    <div className="  m-2  h-96 w-40  rounded-xl border-x-2 border-y-4 border-x-slate-600 border-y-slate-800 bg-slate-300 px-1 shadow-lg shadow-black  dark:border-y-slate-300 dark:bg-zinc-800">
+    <div className="m-2  h-96 w-40  rounded-xl border-x-2 border-y-4 border-x-slate-600 border-y-slate-800 bg-slate-300 px-1 shadow-lg shadow-black  dark:border-y-slate-300 dark:bg-zinc-800">
       <div>
         <div className=" pt-1">
-          <a href={carData.href} target="_blank" rel="noopener noreferrer">
-            <img
-              src="https://images.kupujemprodajem.com/photos/oglasi/5/26/146780265/tmb-300x300-146780265_63cae34d5035b9-71506224f50c9672-6044-4.jpg"
-              alt=""
-              className="rounded-xl"
-            />
+          <a href={carData.Href} target="_blank" rel="noopener noreferrer">
+            <img src={carData.ImageUrl} alt="" className="rounded-xl" />
           </a>
         </div>
         <div className="">

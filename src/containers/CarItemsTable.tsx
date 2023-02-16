@@ -22,7 +22,7 @@ export default function CarItemsTable({ list }: { list: Array<CarInterface> }) {
             return (
               <CarItemList
                 carObject={carObject}
-                key={carObject.id}
+                key={carObject.Id}
                 index={index}
               />
             );
