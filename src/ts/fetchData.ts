@@ -52,7 +52,9 @@ export async function fetchPageNum(
 
   if (result.ok) {
     console.log('result good');
+    console.log(await result.json());
     const resultData: { data: string | false } = await result.json();
+
     if (!resultData.data) {
       setError('No data on page');
     }
