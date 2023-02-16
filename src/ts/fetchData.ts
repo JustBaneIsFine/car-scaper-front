@@ -51,12 +51,8 @@ export async function fetchPageNum(
   });
 
   if (result.ok) {
-    console.log('result good');
-    console.log(result);
-    console.log(result.body);
-    console.log(await result.json());
-    console.log('end');
-    const resultData: { data: string | false } = await result.json();
+    const resultData: { data: string | false; error: string } =
+      await result.json();
 
     if (!resultData.data) {
       setError('No data on page');
