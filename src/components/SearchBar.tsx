@@ -30,8 +30,8 @@ export default function SearchBar() {
     setErrorState({
       makeError: false,
       modelError: false,
-      yearStart: false,
-      yearEnd: false,
+      yearStartError: false,
+      yearEndError: false,
     });
   }, []);
   const refMake = useRef<HTMLInputElement>(null);
