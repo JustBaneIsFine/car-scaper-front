@@ -74,16 +74,16 @@ export async function handleFetching(
   const pageNum = await fetchPageNum(object, setError);
   if (!pageNum) {
     setLoad('error');
-    return;
+    return false;
   }
 
   const result = await fetchData(object, pageNum, setError);
   if (!result) {
     setLoad('error');
 
-    return;
+    return false;
   }
-  localStorage.setItem('data', JSON.stringify(result));
 
   setLoad('loaded');
+  return result;
 }

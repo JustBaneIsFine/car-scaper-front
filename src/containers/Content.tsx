@@ -14,7 +14,7 @@ import mockedData from '../assets/mockdata.json';
 import { CarInterface } from '../interfaces/carInterface';
 import sortCars from '../ts/sorting';
 
-export default function Content() {
+export default function Content({ content }: { content: CarInterface[] }) {
   const [ButtonState, setButtonState] = useState<ButtonStateInterface>(
     {} as ButtonStateInterface
   );
@@ -32,14 +32,14 @@ export default function Content() {
 
   useEffect(() => {
     const data = sortCars(
-      mockedData,
+      content,
       'number',
       ButtonState.sortOrder,
       ButtonState.sortType
     );
     console.log(ButtonState.sortOrder, data);
     setSortedList(data);
-  }, [ButtonState, setSortedList]);
+  }, [ButtonState, setSortedList, content]);
 
   useEffect(() => {
     console.log('changed');

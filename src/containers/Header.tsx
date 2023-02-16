@@ -1,10 +1,15 @@
 import SearchBar from '../components/SearchBar';
 import background from '../assets/images/background.jpg';
+import { CarInterface } from '../interfaces/carInterface';
 
 const websiteUnderConstruction =
   "Website coming soon(ish): It's like a car with no engine, that's what you're looking at in preview mode. No functionalities yet, but don't worry, the human is working on it...";
 
-export default function Header() {
+export default function Header({
+  setContent,
+}: {
+  setContent: React.Dispatch<React.SetStateAction<CarInterface[]>>;
+}) {
   return (
     <div className="w-full bg-gradient-to-b from-slate-100 to-slate-400 text-center text-black ">
       <div className="h-full w-full bg-white">
@@ -15,9 +20,8 @@ export default function Header() {
           </div>
         </div>
         <div className="flex place-content-start ">
-          <SearchBar />
+          <SearchBar setContentData={setContent} />
         </div>
-
         <div className="m-auto mt-10 flex w-3/4 flex-col items-center gap-5 pb-5">
           <p id="currentStatus" className="flex">
             {/* Current state is, not logged in/ loading/ loaded etc */}

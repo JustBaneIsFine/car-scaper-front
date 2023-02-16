@@ -8,7 +8,7 @@ import yearsList from '../assets/yearValues.json';
 
 import LoadingInterface from '../interfaces/loadingInterface';
 import { fetchData, fetchPageNum, handleFetching } from '../ts/fetchData';
-import { CarInterfaceRequest } from '../interfaces/carInterface';
+import { CarInterface, CarInterfaceRequest } from '../interfaces/carInterface';
 import { InputErrorState } from '../interfaces/StateInterfaces';
 import checkInputs, {
   generateObject,
@@ -17,7 +17,11 @@ import checkInputs, {
   returnYearList,
 } from '../ts/checkInputs';
 
-export default function SearchBar() {
+export default function SearchBar({
+  setContentData,
+}: {
+  setContentData: React.Dispatch<React.SetStateAction<CarInterface[]>>;
+}) {
   const [errorState, setErrorState] = useState({} as InputErrorState);
   const [loadState, setLoadState] =
     useState<LoadingInterface['values']>('none');
@@ -160,7 +164,15 @@ export default function SearchBar() {
             if (!inputValid) {
               return;
             }
-            await handleFetching(setLoadState, object, setFetchError);
+            const result = await handleFetching(
+              setLoadState,
+              object,
+              setFetchError
+            );
+            if (!result) {
+              return;
+            }
+            setContentData(result);
           }}
         />
       </div>
