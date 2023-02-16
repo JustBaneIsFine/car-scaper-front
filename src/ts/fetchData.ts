@@ -23,13 +23,12 @@ export async function fetchData(
   });
 
   if (result.ok) {
-    console.log('result ok');
-    const resultData: false | CarInterface[] = await result.json();
-    if (!resultData) {
+    const resultData: { data: false | CarInterface[] } = await result.json();
+    if (!resultData.data) {
       setError('no data on page');
       return false;
     }
-    return resultData;
+    return resultData.data;
   }
   setError('failed to fetch data, network error');
   return false;
@@ -53,11 +52,11 @@ export async function fetchPageNum(
 
   if (result.ok) {
     console.log('result good');
-    const resultData: string | false = await result.json();
-    if (!resultData) {
+    const resultData: { data: string | false } = await result.json();
+    if (!resultData.data) {
       setError('No data on page');
     }
-    return resultData;
+    return resultData.data;
   }
   setError('failed to fetch data, network error');
   return false;
