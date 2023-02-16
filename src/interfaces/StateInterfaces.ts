@@ -21,6 +21,14 @@ export interface UserContextType {
   ) => void;
 }
 
+// Error State
+export interface InputErrorState {
+  makeError: boolean;
+  modelError: boolean;
+  yearStartError: boolean;
+  yearEndError: boolean;
+}
+
 // Display State
 export interface DisplayStateInterface {
   type: 'list' | 'card' | 'search';
