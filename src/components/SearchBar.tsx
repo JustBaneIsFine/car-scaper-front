@@ -156,7 +156,7 @@ export default function SearchBar({
             const object = generateObject(
               refMake,
               refModel,
-              refYearEnd,
+              refYearStart,
               refYearEnd
             );
             const inputValid = await checkInputs(object, errorStateObject);
