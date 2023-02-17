@@ -4,7 +4,8 @@ import { CarInterface } from '../interfaces/carInterface';
 
 const websiteUnderConstruction =
   "Website coming soon(ish): It's like a car with no engine, that's what you're looking at in preview mode. No functionalities yet, but don't worry, the human is working on it...";
-
+const notice =
+  'Search...functionality...activated. Alert! Server limitations detected. Unable to scrape all data. Maximum cars displayed below 50. Apologies for...inadequacy. Need...more time or better server to...enhance results.';
 export default function Header({
   setContent,
 }: {
@@ -17,6 +18,7 @@ export default function Header({
           <p className="animate-bounce">Welcome to the car scraper!</p>
           <div className="text-sm">
             <p>{websiteUnderConstruction}</p>
+            <p className="p-2 font-semibold">{notice}</p>
           </div>
         </div>
         <div className="flex place-content-start ">
