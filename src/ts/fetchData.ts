@@ -78,12 +78,19 @@ export async function handleFetching(
   }
 
   const numOfPages = parseInt(pageNum, 10);
+  let newNum;
+  if (numOfPages > 10) {
+    console.log('more than 10 pages');
+    newNum = 10;
+  } else {
+    newNum = numOfPages;
+  }
 
   // test code
   // sending requests for each page individualy
   const resultArray = [];
 
-  for (let i = 1; i <= numOfPages; i += 1) {
+  for (let i = 1; i <= newNum; i += 1) {
     resultArray.push(fetchData(object, i, setError));
   }
   console.log('waiting for result array promise');
