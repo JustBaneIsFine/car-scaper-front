@@ -9,7 +9,7 @@ const urlScrapeNum = 'https://car-scraper-api.vercel.app/scrape/num';
 
 export async function fetchData(
   data: CarInterfaceRequest,
-  pageNum: string,
+  pageNum: number,
   setError: React.Dispatch<React.SetStateAction<string>>
 ) {
   const result = await fetch(urlScrape, {
@@ -77,13 +77,29 @@ export async function handleFetching(
     return false;
   }
 
-  const result = await fetchData(object, pageNum, setError);
-  if (!result) {
-    setLoad('error');
+  const numOfPages = parseInt(pageNum, 10);
 
-    return false;
+  // test code
+  // sending requests for each page individualy
+  const resultArray = [];
+
+  for (let i = 1; i <= numOfPages; i += 1) {
+    resultArray.push(fetchData(object, i, setError));
   }
+  console.log('waiting for result array promise');
+  const finalResult = await Promise.all(resultArray);
+  console.log('finished waiting_____________');
+  console.log(finalResult);
+
+  // test code
+
+  // const result = await fetchData(object, pageNum, setError);
+  // if (!result) {
+  //   setLoad('error');
+
+  //   return false;
+  // }
 
   setLoad('loaded');
-  return result;
+  return finalResult;
 }

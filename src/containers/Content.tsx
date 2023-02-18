@@ -14,7 +14,11 @@ import mockedData from '../assets/mockdata.json';
 import { CarInterface } from '../interfaces/carInterface';
 import sortCars from '../ts/sorting';
 
-export default function Content({ content }: { content: CarInterface[] }) {
+export default function Content({
+  content,
+}: {
+  content: (false | CarInterface[])[];
+}) {
   const [ButtonState, setButtonState] = useState<ButtonStateInterface>(
     {} as ButtonStateInterface
   );

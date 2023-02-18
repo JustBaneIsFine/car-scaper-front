@@ -4,7 +4,7 @@ import Content from './Content';
 import { CarInterface } from '../interfaces/carInterface';
 
 export default function SearchDataContainer() {
-  const [data, setData] = useState<CarInterface[]>([]);
+  const [data, setData] = useState<(false | CarInterface[])[]>([]);
 
   useEffect(() => {
     const storageList: null | string = localStorage.getItem('data');

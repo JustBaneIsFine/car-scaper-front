@@ -1,17 +1,19 @@
 import { CarInterface } from '../interfaces/carInterface';
 
 export default function sortCars(
-  array: Array<CarInterface>,
+  array: (false | CarInterface[])[],
   sortType: 'number' | 'text',
   sortOrder: 'Asc' | 'Desc',
   sortChoice: 'CarPrice' | 'CarKM' | 'CarCC' | 'CarYear'
 ) {
+  const extractedData = extractDataFromArray(array);
+
   if (sortType === 'number') {
     return sortOrder === 'Asc'
-      ? sortAscending(array, sortChoice)
-      : sortDescending(array, sortChoice);
+      ? sortAscending(extractedData, sortChoice)
+      : sortDescending(extractedData, sortChoice);
   }
-  return sortFuelType(array, sortOrder);
+  return sortFuelType(extractedData, sortOrder);
 }
 
 function sortAscending(
@@ -40,4 +42,20 @@ function sortFuelType(array: Array<CarInterface>, sortOrder: 'Asc' | 'Desc') {
       ? a.CarFuel.localeCompare(b.CarFuel)
       : b.CarFuel.localeCompare(a.CarFuel)
   );
+}
+
+function extractDataFromArray(array: (false | CarInterface[])[]) {
+  //
+  //
+  const cleanData: CarInterface[] = [];
+
+  array.forEach((x) => {
+    if (x !== false) {
+      x.forEach((object) => {
+        cleanData.push(object);
+      });
+    }
+  });
+
+  return cleanData;
 }
