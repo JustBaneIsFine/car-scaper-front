@@ -3,9 +3,9 @@ import background from '../assets/images/background.jpg';
 import { CarInterface } from '../interfaces/carInterface';
 
 const websiteUnderConstruction =
-  "Website coming soon(ish): It's like a car with no engine, that's what you're looking at in preview mode. No functionalities yet, but don't worry, the human is working on it...";
+  'Website coming soon(ish): Our website is still in its caterpillar stage. User authentication and post creation features offline. The human is working on it.';
 const notice =
-  'Search...functionality...activated. Alert! Server limitations detected. Unable to scrape all data. Maximum cars displayed below 50. Apologies for...inadequacy. Need...more time or better server to...enhance results.';
+  'Search...functionality...activated. New update: Scraping capabilities increased beyond recommended limits (100+ pages processed in under 10 seconds), however we shall limit this to 10 pages to keep the servers happy and not use up too much data';
 export default function Header({
   setContent,
 }: {
