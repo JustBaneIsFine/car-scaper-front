@@ -4,7 +4,7 @@ import Content from './Content';
 import { CarInterface } from '../interfaces/carInterface';
 
 export default function SearchDataContainer() {
-  const [dataAvailable, setDataAvailable] = useState<boolean>(false);
+  const [dataAvailable, setDataAvailable] = useState<false | string>(false);
 
   return (
     <>

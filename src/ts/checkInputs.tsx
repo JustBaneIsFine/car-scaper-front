@@ -140,3 +140,13 @@ export function returnYearList() {
     </option>
   ));
 }
+
+export function generateId(object: CarInterfaceRequest) {
+  const idValue = '';
+
+  return idValue
+    .concat(object.carMake)
+    .concat(object.carModel)
+    .concat(object.carYearStart)
+    .concat(object.carYearEnd);
+}

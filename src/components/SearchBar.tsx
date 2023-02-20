@@ -11,6 +11,7 @@ import { fetchData, fetchPageNum, handleFetching } from '../ts/fetchData';
 import { CarInterface, CarInterfaceRequest } from '../interfaces/carInterface';
 import { InputErrorState } from '../interfaces/StateInterfaces';
 import checkInputs, {
+  generateId,
   generateObject,
   returnMakeList,
   returnModelList,
@@ -20,7 +21,7 @@ import checkInputs, {
 export default function SearchBar({
   setContentData,
 }: {
-  setContentData: React.Dispatch<React.SetStateAction<boolean>>;
+  setContentData: React.Dispatch<React.SetStateAction<false | string>>;
 }) {
   const [errorState, setErrorState] = useState({} as InputErrorState);
   const [loadState, setLoadState] =
@@ -159,6 +160,8 @@ export default function SearchBar({
               refYearStart,
               refYearEnd
             );
+            const generationId = generateId(object);
+
             const inputValid = await checkInputs(object, errorStateObject);
 
             if (!inputValid) {
@@ -173,7 +176,7 @@ export default function SearchBar({
               return;
             }
             localStorage.setItem('data', JSON.stringify(result));
-            setContentData(true);
+            setContentData(generationId);
           }}
         />
       </div>

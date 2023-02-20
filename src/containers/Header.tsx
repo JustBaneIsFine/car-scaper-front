@@ -9,7 +9,7 @@ const notice =
 export default function Header({
   setContent,
 }: {
-  setContent: React.Dispatch<React.SetStateAction<boolean>>;
+  setContent: React.Dispatch<React.SetStateAction<false | string>>;
 }) {
   return (
     <div className="w-full bg-gradient-to-b from-slate-100 to-slate-400 text-center text-black ">

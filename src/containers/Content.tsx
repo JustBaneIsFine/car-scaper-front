@@ -14,7 +14,11 @@ import mockedData from '../assets/mockdata.json';
 import { CarInterface } from '../interfaces/carInterface';
 import sortCars from '../ts/sorting';
 
-export default function Content({ dataAvailable }: { dataAvailable: boolean }) {
+export default function Content({
+  dataAvailable,
+}: {
+  dataAvailable: false | string;
+}) {
   const [ButtonState, setButtonState] = useState<ButtonStateInterface>(
     {} as ButtonStateInterface
   );
@@ -31,6 +35,9 @@ export default function Content({ dataAvailable }: { dataAvailable: boolean }) {
   }, []);
 
   useEffect(() => {
+    if (dataAvailable === false) {
+      return;
+    }
     const storedData = localStorage.getItem('data');
     if (storedData === null) {
       return;
