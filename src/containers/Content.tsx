@@ -36,10 +36,12 @@ export default function Content({
 
   useEffect(() => {
     if (dataAvailable === false) {
+      console.log('state is false');
       return;
     }
     const storedData = localStorage.getItem('data');
     if (storedData === null) {
+      console.log('storage is null');
       return;
     }
 

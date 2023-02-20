@@ -162,6 +162,9 @@ export default function SearchBar({
             );
             const generationId = generateId(object);
 
+            if (generationId === localStorage.getItem('dataId')) {
+              return;
+            }
             const inputValid = await checkInputs(object, errorStateObject);
 
             if (!inputValid) {
@@ -176,6 +179,7 @@ export default function SearchBar({
               return;
             }
             localStorage.setItem('data', JSON.stringify(result));
+            localStorage.setItem('dataId', generationId);
             setContentData(generationId);
           }}
         />
