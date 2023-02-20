@@ -14,11 +14,7 @@ import mockedData from '../assets/mockdata.json';
 import { CarInterface } from '../interfaces/carInterface';
 import sortCars from '../ts/sorting';
 
-export default function Content({
-  content,
-}: {
-  content: (false | CarInterface[])[];
-}) {
+export default function Content({ dataAvailable }: { dataAvailable: boolean }) {
   const [ButtonState, setButtonState] = useState<ButtonStateInterface>(
     {} as ButtonStateInterface
   );
@@ -35,15 +31,20 @@ export default function Content({
   }, []);
 
   useEffect(() => {
+    const storedData = localStorage.getItem('data');
+    if (storedData === null) {
+      return;
+    }
+
     const data = sortCars(
-      content,
+      JSON.parse(storedData),
       'number',
       ButtonState.sortOrder,
       ButtonState.sortType
     );
     console.log(ButtonState.sortOrder, data);
     setSortedList(data);
-  }, [ButtonState, setSortedList, content]);
+  }, [ButtonState, setSortedList, dataAvailable]);
 
   useEffect(() => {
     console.log('changed');

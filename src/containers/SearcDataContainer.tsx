@@ -4,21 +4,12 @@ import Content from './Content';
 import { CarInterface } from '../interfaces/carInterface';
 
 export default function SearchDataContainer() {
-  const [data, setData] = useState<(false | CarInterface[])[]>([]);
-
-  useEffect(() => {
-    const storageList: null | string = localStorage.getItem('data');
-    if (storageList === null) {
-      return;
-    }
-
-    setData(JSON.parse(storageList));
-  }, []);
+  const [dataAvailable, setDataAvailable] = useState<boolean>(false);
 
   return (
     <>
-      <Header setContent={setData} />
-      <Content content={data} />
+      <Header setContent={setDataAvailable} />
+      <Content dataAvailable={dataAvailable} />
     </>
   );
 }

@@ -20,9 +20,7 @@ import checkInputs, {
 export default function SearchBar({
   setContentData,
 }: {
-  setContentData: React.Dispatch<
-    React.SetStateAction<(false | CarInterface[])[]>
-  >;
+  setContentData: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const [errorState, setErrorState] = useState({} as InputErrorState);
   const [loadState, setLoadState] =
@@ -174,7 +172,8 @@ export default function SearchBar({
             if (!result) {
               return;
             }
-            setContentData(result);
+            localStorage.setItem('data', JSON.stringify(result));
+            setContentData(true);
           }}
         />
       </div>
