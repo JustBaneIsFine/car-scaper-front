@@ -6,6 +6,7 @@ import {
 
 const urlScrape = 'https://car-scraper-api.vercel.app/scrape';
 const urlScrapeNum = 'https://car-scraper-api.vercel.app/scrape/num';
+// const urlScrapeNum = 'http://localhost:3000/scrape/num';
 
 export async function fetchData(
   data: CarInterfaceRequest,
@@ -14,12 +15,14 @@ export async function fetchData(
 ) {
   const result = await fetch(urlScrape, {
     method: 'POST',
-    mode: 'cors',
-    credentials: 'same-origin',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ reqData: data, pageNumPolovni: pageNum }),
+  }).catch((e) => {
+    console.log(e);
+    return e;
   });
 
   if (result.ok) {
@@ -40,13 +43,14 @@ export async function fetchPageNum(
 ) {
   const result: Response = await fetch(urlScrapeNum, {
     method: 'POST',
-    mode: 'cors',
-    credentials: 'same-origin',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
   }).catch((e) => {
+    console.log(e);
+
     return e;
   });
 

@@ -1,8 +1,14 @@
+import { useRef } from 'react';
 import ButtonClassic from '../../components/Buttons/ButtonClassic';
 import ButtonLink from '../../components/Buttons/ButtonLink';
 import ButtonClassicLink from '../../components/Buttons/ButtonClassicLink';
+import { loginFetch } from '../../ts/auth/authComm';
+import { UserRequestData } from '../../interfaces/user';
 
 export default function LoginForm() {
+  const usernameRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+
   return (
     <div className=" m-auto mt-5 flex w-4/5  justify-center text-xs sm:mt-8 sm:w-2/3 sm:text-sm">
       <div className="h-72 w-full rounded-xl bg-white sm:h-80 sm:w-1/2">
@@ -12,6 +18,8 @@ export default function LoginForm() {
         <div className="m-auto -mt-5 flex  h-2/4  w-11/12 flex-col justify-center space-y-1 sm:-mt-12  sm:space-y-2">
           <div className="flex">
             <input
+              ref={usernameRef}
+              required
               className="m-auto w-4/5 rounded-sm border border-black p-1"
               type="text"
               placeholder="Email/Username"
@@ -19,6 +27,8 @@ export default function LoginForm() {
           </div>
           <div className="flex">
             <input
+              ref={passwordRef}
+              required
               className="m-auto w-4/5 rounded-sm border border-black p-1"
               type="password"
               placeholder="Password"
@@ -31,13 +41,25 @@ export default function LoginForm() {
           </a>
         </div>
         <div className="m-auto mt-3 flex w-2/4 flex-col justify-center sm:mt-2">
-          <ButtonClassic name="Log in" onclick={x} />
+          <ButtonClassic
+            name="Log in"
+            onclick={() => {
+              const user = usernameRef.current?.value;
+              const pass = passwordRef.current?.value;
+              const email = user;
+              const userObj: UserRequestData = {} as UserRequestData;
+              if (user && pass && email) {
+                userObj.username = user;
+                userObj.password = pass;
+                userObj.email = email;
+              }
+
+              loginFetch(userObj);
+            }}
+          />
           <ButtonClassicLink name="Register" link="/Register" />
         </div>
       </div>
     </div>
   );
-  function x() {
-    // x
-  }
 }

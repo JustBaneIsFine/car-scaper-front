@@ -19,6 +19,7 @@ import SearchDataContainer from './containers/SearcDataContainer';
 // Context providers
 import { UserContextProvider } from './context/UserContext';
 import { DisplayContextProvider } from './context/ItemDisplayContext';
+import Logout from './pages/Logout';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
             <Route path="/Login" element={<Login x="Login Page" />} />
             <Route path="/About" element={<About x="About Page" />} />
             <Route path="/Create" element={<Create x="Create page" />} />
+            <Route path="/Logout" element={<Logout x="Logout page" />} />
           </Routes>
         </UserContextProvider>
         <Footer />
