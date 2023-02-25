@@ -8,7 +8,9 @@
     background-attachment: fixed;
   }
 }
-
+input {
+  color: black;
+}
 /* body {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
   --tw-gradient-from: #0f172a;
