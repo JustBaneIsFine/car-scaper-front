@@ -1,6 +1,10 @@
 import userPlaceholder from '@asset/user-placeholder.png';
+import { useContext } from 'react';
+import UserContext from '../../context/UserContext';
 
 export default function AccountOverview() {
+  const { userState: user } = useContext(UserContext);
+
   return (
     <div className="h-full w-full">
       <div className="flex w-full justify-center border-b  bg-slate-400 text-center">
@@ -11,7 +15,7 @@ export default function AccountOverview() {
           <div>
             <img src={userPlaceholder} alt="" className="h-28" />
           </div>
-          <div className="mt-2">John Doe</div>
+          <div className="mt-2">{user.username}</div>
         </div>
         <div className="">
           <div>

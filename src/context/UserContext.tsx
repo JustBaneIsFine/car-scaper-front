@@ -12,15 +12,13 @@ export function UserContextProvider({ children }: ProviderChildProps) {
 
   function setUserState(
     username: string,
-    userFirstName: string,
-    userLastName: string,
-    userLogedIn: boolean
+    userLogedIn: boolean,
+    userEmail: string
   ) {
     const x = {} as UserStateInterface;
     x.username = username;
-    x.userFirstName = userFirstName;
-    x.userLastName = userLastName;
     x.userLogedIn = userLogedIn;
+    x.userEmail = userEmail;
     setUser(x);
   }
 

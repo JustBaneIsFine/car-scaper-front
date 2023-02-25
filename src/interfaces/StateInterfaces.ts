@@ -5,19 +5,17 @@ export interface ProviderChildProps {
 
 // User State
 export interface UserStateInterface {
+  username: string;
   userLogedIn: boolean;
-  username?: string;
-  userFirstName?: string;
-  userLastName?: string;
+  userEmail: string;
 }
 
 export interface UserContextType {
   userState: UserStateInterface;
   setUserState: (
     username: string,
-    userFirstName: string,
-    userLastName: string,
-    userLogedIn: boolean
+    userLogedIn: boolean,
+    userEmail: string
   ) => void;
 }
 

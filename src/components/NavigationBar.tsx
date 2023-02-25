@@ -1,9 +1,15 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import UserContext from '../context/UserContext';
+import { loginCheck } from '../ts/auth/authComm';
 import ButtonLink from './Buttons/ButtonLink';
 
 export default function NavigationBar() {
   const [toggle, setToggle] = useState(true);
   const [overlay, setOverlay] = useState(false);
+  const user = useContext(UserContext);
+  const {
+    userState: { username, userLogedIn, userEmail },
+  } = user;
 
   return (
     <nav className=" fixed top-0 z-50 flex h-14 w-full flex-col justify-between  border-b bg-white bg-opacity-40 pl-2 pr-2 shadow-xl dark:bg-black dark:bg-opacity-70 sm:flex-row">
@@ -49,17 +55,34 @@ export default function NavigationBar() {
         </div>
         <div className=" flex flex-col justify-between sm:flex-row">
           <div>
-            <ButtonLink
-              link="/Register"
-              name="Register"
-              handleLink={handleClick}
-            />
+            {userLogedIn ? (
+              <ButtonLink
+                link="/Logout"
+                name="Log out"
+                handleLink={handleClick}
+              />
+            ) : (
+              <ButtonLink
+                link="/Register"
+                name="Register"
+                handleLink={handleClick}
+              />
+            )}
           </div>
           <div>
-            <ButtonLink link="/Logout" name="LogOut" handleLink={handleClick} />
-          </div>
-          <div>
-            <ButtonLink link="/Login" name="Log in" handleLink={handleClick} />
+            {userLogedIn ? (
+              <ButtonLink
+                link="/userAccount"
+                name={username}
+                handleLink={handleClick}
+              />
+            ) : (
+              <ButtonLink
+                link="/Login"
+                name="Log in"
+                handleLink={handleClick}
+              />
+            )}
           </div>
         </div>
       </div>

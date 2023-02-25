@@ -1,14 +1,17 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ButtonClassic from '../../components/Buttons/ButtonClassic';
 import ButtonClassicLink from '../../components/Buttons/ButtonClassicLink';
+import UserContext from '../../context/UserContext';
 import { UserRequestData } from '../../interfaces/user';
-import { registerFetch } from '../../ts/auth/authComm';
+import { loginCheck, loginFetch, registerFetch } from '../../ts/auth/authComm';
 
 export default function RegisterForm() {
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
-
+  const userContext = useContext(UserContext);
+  const navigate = useNavigate();
   return (
     <div className=" m-auto mt-5 flex w-4/5  justify-center text-xs sm:mt-8 sm:w-2/3 sm:text-sm">
       <div className="h-80 w-full rounded-xl bg-white sm:h-96 sm:w-1/2 ">
@@ -56,7 +59,7 @@ export default function RegisterForm() {
         <div className="m-auto mt-3 flex w-2/4 flex-col justify-center sm:mt-2">
           <ButtonClassic
             name="Create Account"
-            onclick={() => {
+            onclick={async () => {
               const user = usernameRef.current?.value;
               const pass = passwordRef.current?.value;
               const email = emailRef.current?.value;
@@ -67,7 +70,10 @@ export default function RegisterForm() {
                 userObj.email = email;
               }
 
-              registerFetch(userObj);
+              await registerFetch(userObj);
+              // eslint-disable-next-line react/destructuring-assignment
+              userContext.setUserState(userObj.username, true, userObj.email);
+              navigate('/');
             }}
           />
           <ButtonClassicLink name="Log in" link="/Login" />
