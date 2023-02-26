@@ -41,28 +41,28 @@ export async function loginFetch(data: UserRequestData) {
   const result = await fetchData('POST', loginUrl, data);
   if (!result || !result.ok) {
     console.log('login network error ');
-    return false;
+    return { success: false, user: false, error: 'Network error' };
   }
   const resultParsed = await result.json();
 
   if (!resultParsed.success && resultParsed.error) {
     console.log('You are not logged in', resultParsed.error);
-    return false;
+    return { success: false, user: false, error: resultParsed.error };
   }
-  return resultParsed.user;
+  return { success: true, user: resultParsed.user, error: false };
 }
 
 export async function registerFetch(data: UserRequestData) {
   const result = await fetchData('POST', registerUrl, data);
   if (!result) {
     console.log('register network error ');
-    return false;
+    return { success: false, user: false, error: 'Network error' };
   }
   const resultParsed = await result.json();
   if (resultParsed.success && !resultParsed.error) {
-    return resultParsed.user;
+    return { success: true, user: resultParsed.user, error: false };
   }
-  return resultParsed.error;
+  return { success: false, user: false, error: resultParsed.error };
 }
 
 export async function logoutFetch() {

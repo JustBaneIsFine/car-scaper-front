@@ -96,11 +96,25 @@ export default function LoginForm() {
               }
 
               const result = await loginFetch(userObj);
-              if (result) {
+              if (result.success) {
                 // eslint-disable-next-line react/destructuring-assignment
-                userContext.setUserState(result.username, true, result.email);
+                userContext.setUserState(
+                  result.user.username,
+                  true,
+                  result.user.email
+                );
+                navigate('/');
+              } else if (result.error) {
+                setInputError((prev) => ({
+                  ...prev,
+                  usernameError: result.error,
+                  passwordError: result.error,
+                }));
+                if (usernameRef.current && passwordRef.current) {
+                  usernameRef.current.value = '';
+                  passwordRef.current.value = '';
+                }
               }
-              navigate('/');
             }}
           />
           <ButtonClassicLink name="Register" link="/Register" />

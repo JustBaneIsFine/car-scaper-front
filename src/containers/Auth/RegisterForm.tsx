@@ -126,10 +126,33 @@ export default function RegisterForm() {
               }
 
               const result = await registerFetch(userObj);
-              if (result) {
+              if (result.success) {
                 // eslint-disable-next-line react/destructuring-assignment
-                userContext.setUserState(userObj.username, true, userObj.email);
+                userContext.setUserState(
+                  result.user.username,
+                  true,
+                  result.user.email
+                );
                 navigate('/');
+              } else if (result.error) {
+                setInputError((prev) => ({
+                  ...prev,
+                  usernameError: result.error,
+                  passwordError: result.error,
+                  emailError: result.error,
+                  passwordConfirmError: result.error,
+                }));
+                if (
+                  usernameRef.current &&
+                  passwordRef.current &&
+                  emailRef.current &&
+                  passwordConfirmRef.current
+                ) {
+                  usernameRef.current.value = '';
+                  passwordRef.current.value = '';
+                  emailRef.current.value = '';
+                  passwordConfirmRef.current.value = '';
+                }
               }
             }}
           />
