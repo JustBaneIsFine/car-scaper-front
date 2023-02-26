@@ -14,5 +14,5 @@ export async function handleLogoutAuth() {
 }
 
 export async function handleLoginCheck(data: UserRequestData) {
-  const loggedin = await loginCheck(data);
+  const loggedin = await loginCheck();
 }
