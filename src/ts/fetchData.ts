@@ -33,7 +33,7 @@ export async function fetchData(
     }
     return resultData.data;
   }
-  setError('failed to fetch data, network error');
+  setError('failed to fetch some data');
   return false;
 }
 
