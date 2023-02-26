@@ -4,8 +4,8 @@ export default function checkInputsAuth(
   setError: React.Dispatch<React.SetStateAction<InputErrorAuth>>,
   username: string | undefined,
   password: string | undefined,
-  email?: string | undefined,
-  passwordConfirm?: string | undefined
+  email?: string | undefined | null,
+  passwordConfirm?: string | undefined | null
 ) {
   const errorObj = {} as InputErrorAuth;
   // handle username
@@ -31,8 +31,10 @@ export default function checkInputsAuth(
     errorObj.passwordError = false;
   }
   if (!email || email.length <= 3) {
-    errorObj.emailError = 'Email too short';
-    inputsValid = false;
+    if (email !== null) {
+      errorObj.emailError = 'Email too short';
+      inputsValid = false;
+    }
   } else if (email.length > 30) {
     errorObj.emailError = 'Email too long';
     inputsValid = false;
@@ -40,8 +42,10 @@ export default function checkInputsAuth(
     errorObj.emailError = false;
   }
   if (!passwordConfirm || passwordConfirm !== password) {
-    errorObj.passwordConfirmError = 'Password does not match';
-    inputsValid = false;
+    if (passwordConfirm !== null) {
+      errorObj.passwordConfirmError = 'Password does not match';
+      inputsValid = false;
+    }
   } else {
     errorObj.passwordConfirmError = false;
   }

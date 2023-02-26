@@ -79,7 +79,13 @@ export default function LoginForm() {
               const email = emailRef.current?.value;
               const userObj: UserRequestData = {} as UserRequestData;
 
-              const inputValid = checkInputsAuth(setInputError, user, pass);
+              const inputValid = checkInputsAuth(
+                setInputError,
+                user,
+                pass,
+                null,
+                null
+              );
               if (!inputValid) {
                 return;
               }
