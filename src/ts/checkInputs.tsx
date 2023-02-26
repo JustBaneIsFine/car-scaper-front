@@ -3,8 +3,6 @@ import { InputErrorState } from '../interfaces/StateInterfaces';
 import valuesArray from '../assets/FinalDataCollection.json';
 import yearsArray from '../assets/yearValues.json';
 
-const url = 'https://car-scraper-api.vercel.app/scrape';
-
 export default async function checkInputs(
   data: {
     carMake: string;
@@ -54,7 +52,7 @@ export default async function checkInputs(
   return true;
 }
 
-function isEmpty(x: string) {
+export function isEmpty(x: string) {
   if (x === '') {
     return true;
   }

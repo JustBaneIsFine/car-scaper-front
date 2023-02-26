@@ -3,9 +3,9 @@ import background from '../assets/images/background.jpg';
 import { CarInterface } from '../interfaces/carInterface';
 
 const websiteUnderConstruction =
-  'Website coming soon(ish): Our website is still in its caterpillar stage. User authentication and post creation features offline. The human is working on it.';
+  'The most important features are working, working on other features, bugs, style etc.';
 const notice =
-  'Search...functionality...activated. New update: Scraping capabilities increased beyond recommended limits (100+ pages processed in under 10 seconds), however we shall limit this to 10 pages to keep the servers happy and not use up too much data';
+  'About page will soon be changed to contain more information about the project';
 export default function Header({
   setContent,
 }: {

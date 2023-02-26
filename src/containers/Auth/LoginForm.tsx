@@ -1,18 +1,31 @@
-import { useContext, useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import ButtonClassic from '../../components/Buttons/ButtonClassic';
-import ButtonLink from '../../components/Buttons/ButtonLink';
 import ButtonClassicLink from '../../components/Buttons/ButtonClassicLink';
 import { loginFetch } from '../../ts/auth/authComm';
 import { UserRequestData } from '../../interfaces/user';
 import UserContext from '../../context/UserContext';
+import { InputErrorAuth } from '../../interfaces/StateInterfaces';
+import checkInputsAuth from './inputValidation';
 
 export default function LoginForm() {
+  const [inputError, setInputError] = useState<InputErrorAuth>(
+    {} as InputErrorAuth
+  );
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
   const userContext = useContext(UserContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const errorObj = {} as InputErrorAuth;
+    errorObj.usernameError = false;
+    errorObj.passwordError = false;
+    errorObj.emailError = false;
+    setInputError(errorObj);
+  }, []);
 
   return (
     <div className="  m-auto mt-5 flex w-4/5  justify-center text-xs sm:mt-8 sm:w-2/3 sm:text-sm">
@@ -25,22 +38,34 @@ export default function LoginForm() {
             <input
               ref={usernameRef}
               required
-              className="m-auto w-4/5 rounded-sm border border-black p-1"
+              className={`m-auto w-4/5 rounded-sm border border-black p-1 ${
+                inputError.usernameError
+                  ? ' animate-pulse border-2 border-red-600'
+                  : ''
+              }`}
               type="text"
-              placeholder="Email/Username"
+              placeholder={`${
+                inputError.usernameError ? inputError.usernameError : 'Username'
+              }`}
             />
           </div>
           <div className="flex">
             <input
               ref={passwordRef}
               required
-              className="m-auto w-4/5 rounded-sm border border-black p-1"
+              className={`m-auto w-4/5 rounded-sm border border-black p-1 ${
+                inputError.passwordError
+                  ? 'animate-pulse border-2 border-red-600'
+                  : ''
+              } `}
               type="password"
-              placeholder="Password"
+              placeholder={`${
+                inputError.passwordError ? inputError.passwordError : 'Password'
+              }`}
             />
           </div>
         </div>
-        <div className="-mt-9 mr-9 flex justify-end">
+        <div className="-mt-7 mr-9 flex justify-end">
           <a href="/" className="text-sky-300 hover:text-sky-500">
             Forgot your password?
           </a>
@@ -51,8 +76,13 @@ export default function LoginForm() {
             onclick={async () => {
               const user = usernameRef.current?.value;
               const pass = passwordRef.current?.value;
-              const email = user;
+              const email = emailRef.current?.value;
               const userObj: UserRequestData = {} as UserRequestData;
+
+              const inputValid = checkInputsAuth(setInputError, user, pass);
+              if (!inputValid) {
+                return;
+              }
               if (user && pass && email) {
                 userObj.username = user;
                 userObj.password = pass;

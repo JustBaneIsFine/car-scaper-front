@@ -5,9 +5,9 @@ import {
 } from '../../interfaces/mongoInterfaces';
 import { UserRequestData } from '../../interfaces/user';
 
-// const mainUrl = 'https://car-scraper-api.vercel.app';
+const mainUrl = 'https://car-scraper-api.vercel.app';
 // test url
-const mainUrl = 'http://localhost:3000';
+// const mainUrl = 'http://localhost:3000';
 
 const loginUrl = mainUrl.concat('/login');
 const registerUrl = mainUrl.concat('/register');

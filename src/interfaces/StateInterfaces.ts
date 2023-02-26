@@ -65,3 +65,10 @@ export interface StepsInterface {
   step3: boolean;
   step4: boolean;
 }
+
+export interface InputErrorAuth {
+  usernameError: false | string;
+  emailError: false | string;
+  passwordError: false | string;
+  passwordConfirmError: false | string;
+}

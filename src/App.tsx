@@ -49,7 +49,7 @@ function App() {
           <Route path="/Login" element={<Login x="Login Page" />} />
           <Route path="/About" element={<About x="About Page" />} />
           <Route path="/Create" element={<Create x="Create page" />} />
-          <Route path="/Logout" element={<Logout x="Logout page" />} />
+          <Route path="/Logout" element={<Logout />} />
           <Route path="/userAccount" element={<UserAccount x="s" />} />
         </Routes>
 
