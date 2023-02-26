@@ -89,12 +89,11 @@ export default function LoginForm() {
               if (!inputValid) {
                 return;
               }
-              if (user && pass && email) {
+              if (user && pass) {
                 userObj.username = user;
                 userObj.password = pass;
-                userObj.email = email;
               }
-
+              console.log(userObj);
               const result = await loginFetch(userObj);
               if (result.success) {
                 // eslint-disable-next-line react/destructuring-assignment
