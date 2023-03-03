@@ -1,6 +1,6 @@
 {
   "bugs": [
-    "Choosing make/model/years not possible on mobile",
+    "Datalist for input is unavailable for firefox mobile for now",
     "When scrolling on mobile, footer gets a weird overlay",
     "Typing manually or refreshing causes 404, need server-side routing"
   ],
