@@ -1,0 +1,12 @@
+{
+  "bugs": [
+    "Choosing make/model/years not possible on mobile",
+    "When scrolling on mobile, footer gets a weird overlay",
+    "Typing manually or refreshing causes 404, need server-side routing"
+  ],
+  "features": [
+    "Ability to create car posts",
+    "Ability to favorite car posts",
+    "Searching for our users posted cars"
+  ]
+}
