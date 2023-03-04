@@ -11,6 +11,12 @@
 input {
   color: black;
 }
+:root {
+}
+
+html {
+  min-height: 100vh;
+}
 /* body {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
   --tw-gradient-from: #0f172a;
