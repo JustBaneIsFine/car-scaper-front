@@ -11,8 +11,8 @@ export default function About({ x }: { x: string }) {
         If you are the owner of the below websites and do not want the websites
         to be scraped please contact me!
       </p>
-      <div className=" inline-flex  w-full justify-around">
-        <div className="w-1/4 ">
+      <div className=" w-full  justify-around sm:inline-flex">
+        <div className="pb-5 sm:w-1/4 ">
           <span className="text-lg">Known bugs to be fixed:</span>
           <div className="m-auto mt-5 w-full border border-dashed border-white  opacity-50" />
           <ul className=" list-decimal text-left">
