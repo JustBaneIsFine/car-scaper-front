@@ -11,8 +11,9 @@
 input {
   color: black;
 }
-html {
-  min-height: 100%;
+html,
+body {
+  height: 100%;
 }
 /* body {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
