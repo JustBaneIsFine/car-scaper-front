@@ -26,4 +26,11 @@ export default defineConfig({
       '/*': 'https://car-scraper-api.vercel.app/',
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        entryFileNames: 'viteBundle.js',
+      },
+    },
+  },
 });
