@@ -37,7 +37,7 @@ export default function NavigationBar() {
       </div>
 
       <div
-        className=" fixed top-14 left-0  rounded-md   sm:top-0 sm:!flex sm:w-full sm:justify-between sm:rounded-none"
+        className=" fixed top-14 left-0 rounded-md  sm:relative   sm:top-0 sm:!flex sm:w-full sm:justify-between sm:rounded-none"
         style={{
           display: toggle ? 'none' : '',
         }}
