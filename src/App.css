@@ -4,10 +4,10 @@
 
 @layer components {
   body {
-    @apply text-black dark:text-white;
+    @apply h-full text-black dark:text-white;
   }
   .bg-wrap {
-    @apply bg-gradient-to-b from-slate-100 to-slate-400 pb-12 dark:from-gray-700  dark:to-slate-900 sm:bg-fixed sm:pb-0;
+    @apply h-screen overflow-y-auto bg-gradient-to-b from-slate-100 to-slate-400 pt-14 pb-12 dark:from-gray-700  dark:to-slate-900 sm:bg-fixed sm:pb-0;
   }
 }
 
@@ -17,13 +17,8 @@ input {
 html {
   height: 100%;
 }
-body {
-  height: 100%;
-}
 
 .bg-wrap {
-  height: 100vh;
-  overflow-y: scroll;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
