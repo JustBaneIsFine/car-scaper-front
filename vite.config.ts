@@ -22,9 +22,6 @@ export default defineConfig({
   server: {
     port: 3002,
     host: '0.0.0.0',
-    proxy: {
-      '/*': 'https://car-scraper-api.vercel.app/',
-    },
   },
   build: {
     rollupOptions: {
