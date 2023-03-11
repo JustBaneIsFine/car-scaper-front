@@ -3,9 +3,9 @@ import background from '../assets/images/background.jpg';
 import { CarInterface } from '../interfaces/carInterface';
 
 const websiteUnderConstruction =
-  'The most important features are working, working on other features, bugs, style etc.';
-const notice =
-  'About page will soon be changed to contain more information about the project';
+  'Currently developing the back-end for CRUD features (create,read,update,delete --- user data, posts and favorites)';
+const notice = 'Search functionality works, enter your data below';
+
 export default function Header({
   setContent,
 }: {

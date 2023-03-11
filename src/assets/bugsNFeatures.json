@@ -1,8 +1,5 @@
 {
-  "bugs": [
-    "Datalist for input is unavailable for firefox mobile for now",
-    "Typing manually or refreshing causes 404, need server-side routing"
-  ],
+  "bugs": ["Datalist for input is unavailable for firefox mobile for now"],
   "features": [
     "Ability to create car posts",
     "Ability to favorite car posts",
