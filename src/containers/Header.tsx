@@ -3,7 +3,7 @@ import background from '../assets/images/background.jpg';
 import { CarInterface } from '../interfaces/carInterface';
 
 const websiteUnderConstruction =
-  'Currently developing the back-end for CRUD features (create,read,update,delete --- user data, posts and favorites)';
+  'CRUD features available on the back-end. Working on the front.';
 const notice = 'Search functionality works, enter your data below';
 
 export default function Header({
